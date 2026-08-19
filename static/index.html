@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#12151A" />
+  <title>EdgeForge</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wordmark"><span class="mark">Edge</span>Forge</div>
+    <div class="tagline">Forge hypotheses. Break assumptions. Find edges.</div>
+    <div class="ticker" id="ticker">
+      <span><b id="t-tested">—</b> tested</span>
+      <span><b id="t-initial">—</b> survived initial</span>
+      <span><b id="t-oos">—</b> survived OOS</span>
+      <span><b id="t-adversarial">—</b> survived adversarial</span>
+    </div>
+  </div>
+
+  <main id="view"></main>
+
+  <div class="tabbar">
+    <button data-tab="dashboard" class="active"><span class="dot"></span>Dashboard</button>
+    <button data-tab="research"><span class="dot"></span>Research</button>
+    <button data-tab="discoveries"><span class="dot"></span>Discoveries</button>
+    <button data-tab="strategies"><span class="dot"></span>Strategies</button>
+    <button data-tab="settings"><span class="dot"></span>Settings</button>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

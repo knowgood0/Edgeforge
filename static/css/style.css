@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #12151A;
+  --panel: #1B1F26;
+  --panel-raised: #232833;
+  --border: #2A3038;
+  --text: #E7E9EC;
+  --text-dim: #8B93A1;
+  --text-faint: #565E6B;
+
+  --signal: #35D0BA;      /* survived / confirmed / positive */
+  --signal-dim: #1E4A45;
+  --warn: #E8A33D;        /* testing / interesting */
+  --warn-dim: #4A3A1E;
+  --danger: #E0555A;      /* rejected / failed / kill action */
+  --danger-dim: #4A2325;
+  --accent: #6C7CFF;      /* primary interactive */
+
+  --radius: 7px;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 72px; /* space for bottom tab bar */
+  min-height: 100vh;
+}
+
+a { color: inherit; }
+
+/* ---------- Top bar ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(18, 21, 26, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 16px 10px;
+}
+
+.topbar .wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.topbar .wordmark .mark {
+  color: var(--signal);
+}
+
+.topbar .tagline {
+  font-size: 11.5px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  margin-top: 3px;
+  letter-spacing: 0.02em;
+}
+
+.topbar .ticker {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+.topbar .ticker::-webkit-scrollbar { display: none; }
+.topbar .ticker b { color: var(--text); font-weight: 600; }
+
+/* ---------- Content ---------- */
+
+main { padding: 16px; max-width: 640px; margin: 0 auto; }
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  margin: 24px 0 10px;
+}
+.section-label:first-child { margin-top: 4px; }
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+.panel-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  margin: 0 0 4px;
+}
+
+.panel-sub {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* ---------- Edge Score instrument gauge (signature element) ---------- */
+
+.edge-score-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0 4px;
+}
+
+.edge-score-number {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 600;
+  min-width: 58px;
+}
+
+.edge-gauge {
+  flex: 1;
+  display: flex;
+  gap: 3px;
+  height: 18px;
+}
+
+.edge-gauge .tick {
+  flex: 1;
+  background: var(--panel-raised);
+  border-radius: 2px;
+}
+
+.edge-gauge .tick.filled.signal { background: var(--signal); }
+.edge-gauge .tick.filled.warn { background: var(--warn); }
+.edge-gauge .tick.filled.danger { background: var(--danger); }
+
+.status-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+.status-pill.signal { color: var(--signal); border-color: var(--signal-dim); background: var(--signal-dim); }
+.status-pill.warn { color: var(--warn); border-color: var(--warn-dim); background: var(--warn-dim); }
+.status-pill.danger { color: var(--danger); border-color: var(--danger-dim); background: var(--danger-dim); }
+.status-pill.neutral { color: var(--text-dim); border-color: var(--border); background: var(--panel-raised); }
+
+.why-list, .weak-list {
+  margin: 8px 0 0;
+  padding-left: 16px;
+  font-size: 12.5px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* ---------- Buttons ---------- */
+
+button, .btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13.5px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--panel-raised);
+  color: var(--text);
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button.kill {
+  background: var(--danger-dim);
+  border-color: var(--danger);
+  color: var(--danger);
+  width: 100%;
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+}
+button:focus-visible, .btn:focus-visible, a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.stat-cell {
+  background: var(--panel-raised);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+.stat-cell .v { font-family: var(--font-mono); font-size: 17px; font-weight: 600; }
+.stat-cell .l { font-size: 11px; color: var(--text-faint); margin-top: 2px; }
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+/* ---------- Bottom tab bar ---------- */
+
+.tabbar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
+  z-index: 20;
+}
+
+.tabbar button {
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.tabbar button.active { color: var(--signal); }
+.tabbar button .dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+}
+.tabbar button.active .dot { opacity: 1; }
+
+/* ---------- Utility ---------- */
+
+.mono { font-family: var(--font-mono); }
+.dim { color: var(--text-dim); }
+.hidden { display: none !important; }
+
+input, textarea, select {
+  font-family: var(--font-body);
+  background: var(--panel-raised);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 14px;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
